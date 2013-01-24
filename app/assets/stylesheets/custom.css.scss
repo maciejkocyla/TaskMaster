@@ -1,0 +1,45 @@
+@import "bootstrap";
+
+html {
+  
+}
+
+body {
+  padding-top: 90px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #292929;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+
+  color: #CCC;
+  text-decoration: none;
+
+}
+

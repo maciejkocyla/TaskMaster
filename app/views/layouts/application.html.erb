@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%=full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="row span12 offset1">
 
-<%= yield %>
-
-</body>
+    <header class="row span12 offset1 navbar navbar-primary navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "Task Master", '#', id: "logo", class: "row span2" %>
+          <nav>
+            <ul class="nav nav-pills pull-right">
+              <li><%= link_to "Home",    '#' %></li>
+	      <li class="divider-vertical"></li>
+              <li><%= link_to "Help",    '#' %></li>
+	      <li class="divider-vertical"></li>
+              <li><%= link_to "Sign in", '#' %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>
