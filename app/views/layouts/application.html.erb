@@ -10,25 +10,10 @@
     <![endif]-->
   </head>
   <body class="row span12 offset1">
-
-    <header class="row span12 offset1 navbar navbar-primary navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <%= link_to "Task Master", '#', id: "logo", class: "row span2" %>
-          <nav>
-            <ul class="nav nav-pills pull-right">
-              <li><%= link_to "Home",    '#' %></li>
-	      <li class="divider-vertical"></li>
-              <li><%= link_to "Help",    '#' %></li>
-	      <li class="divider-vertical"></li>
-              <li><%= link_to "Sign in", '#' %></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
+    <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
     </div>
+    <%= render 'layouts/footer'%>
   </body>
 </html>
