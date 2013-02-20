@@ -11,13 +11,14 @@ $grayMediumLight: #eaeaea;
 }
 
 html {
-  overflow: auto;
   
 }
 
 body {
-  margin-top: 90px;
-}
+  float: center; 
+  margin: 0 auto;
+  background-color: #EEE;
+ }
 h1 {
   text-align: center;
 }

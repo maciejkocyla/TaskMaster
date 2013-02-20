@@ -1,0 +1,22 @@
+<div class="span12 navbar navbar-inverse">
+  <div class="navbar-inner">
+  <div class="brand span3"><%= @current_user.name %></div>
+    <ul class="nav">
+      <li class="divider-vertical divider-inverse"></li>
+      <li><%= link_to "callendar", '#'%></li>
+      <li><%= link_to "habits", '#'%></li>
+      <li><%= link_to "new task", '#'%></li>
+      <li class="divider-vertical"></li>
+      <li></li>
+    </ul>
+  </div>
+</div>
+
+<ul class="span3 nav nav-list">
+  <li class="nav-header"><%= @current_user.tasks.count%> tasks</li>
+  <% 2.times do%>
+    <li class="divider"></li>
+  <% end %>
+  <%= render @current_user.tasks unless @current_user.tasks.nil?%>
+</ul>
+
