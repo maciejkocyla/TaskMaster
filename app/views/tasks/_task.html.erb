@@ -1,4 +1,11 @@
-<li>
+<div>
+<li 
+<% if @current_task == task%>
+  class="activated"
+<% end %>
+>
   <%= link_to task.name, task%>
+<i class="icon-arrow-right pull-right"></i>
 </li>
-<li class="divider"></li>
+
+</div>

@@ -33,4 +33,8 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.url
   end
+ 
+  def current_task(task)
+    @current_task = task
+  end
 end

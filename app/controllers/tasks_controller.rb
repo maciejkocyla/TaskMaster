@@ -4,6 +4,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    current_task(@task)
   end
 
   def index
