@@ -1,2 +1,14 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
+  <h2>Nowe Zadanie</h2>
+
+
+	<%=form_for(@task) do |t|%>
+	<div class="span4"> 
+		<%= t.text_field(:name, :value => 'nazwa')%>
+	</div>
+	<div class="span6">
+		<%= t. text_area :content, :value => 'opis', :rows => 4%>
+	</div>
+	<div class="span3">
+		<%= t.submit "utwórz", class: "btn btn-inverse"%>
+	</div>
+	<%end%>

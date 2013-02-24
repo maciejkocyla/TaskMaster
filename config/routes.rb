@@ -1,10 +1,13 @@
 TaskMaster::Application.routes.draw do
+  get "relations/create"
+
   resources :tasks
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
 
+  match 'new_task',	to: 'tasks#new'
   match 'signout',	to: 'sessions#destroy', via: :delete
   match 'signin',	to: 'sessions#new'
   match '/signup',	to: 'users#new'
