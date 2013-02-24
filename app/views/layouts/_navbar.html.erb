@@ -6,7 +6,7 @@
       <li><%= link_to "callendar", '#'%></li>
       <li><%= link_to "habits", '#'%></li>
       <li><%= link_to "new task", '#'%></li>
-      <li><%= link_to @current_task.name, '#' %></li>
+      <li><%= link_to @current_task.name, '#' unless @current_task.nil?%></li>
       <li class="divider-vertical"></li>
       <li></li>
     </ul>
