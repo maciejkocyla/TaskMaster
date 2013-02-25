@@ -24,7 +24,7 @@
 
 <ul class="span2 nav nav-list">
   <li class="nav-header"><%= @current_user.tasks.count%> Zadania do wykonania</li>
-      <%= render @current_user.tasks.first %>
+      <%=# render @current_user.tasks.first %>
     <% @current_user.tasks.each do |task|%>
       <%=# render task unless task == @current_user.tasks.first || task.completed? || !task.is_project? || task.nil?%>
     <% end %>
