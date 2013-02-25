@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       sign_in @user
       flash[:success] = "Welcome to the Task Master ! "
       redirect_to @user
-      @user.tasks.create!(name: "Daily")
+      @user.tasks.create!(name: "Daily", is_project: true)
     else
       render 'new'
     end

@@ -35,6 +35,8 @@ module SessionsHelper
   end
  
   def current_task(task)
-    @current_task = task
+    @current_task = task 
   end
+
+
 end

@@ -1,10 +1,24 @@
-<div>
-<li 
-<% if @current_task == task%>
-  class="activated"
-<% end %>
->
-  <%= link_to task.name, task%>
-</li>
-
-</div>
+<%if task.is_project?%>
+  <div>
+    <li 
+      <% if @current_task == task%>
+        class="activated"
+      <% end %>
+    >
+      <%= link_to task.name, task%>
+    </li>
+  </div>
+<%else%>
+    <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= task.id%>">
+        <%= task.name%>
+      </a>
+    </div>
+    <div id="collapse<%= task.id%>" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= task.content%>
+      </div>
+    </div>
+  </div>
+<%end%>
