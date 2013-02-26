@@ -7,19 +7,16 @@
   </div>
 
   <div class="span6">
-    <%= t. text_area :content, :value => 'opis', :rows => 4%>
+    <%= t. text_area :content, :value => "opis #{params[:will_be_project]}", :rows => 4%>
   </div>
-
-  <%= t.hidden_field :is_project, :value=>params[:will_be_project] %>
   
-  <% if :will_be_project != true %>
-
+  <% if params[:will_be_project]== 'true'%>
+    <%= t.hidden_field :is_project, :value=>params[:will_be_project] %>
+  <%else%>
     <%= t.fields_for :relations do |rel|%>
       <%= rel.hidden_field :project_id, :value => params[:will_be_project]%>
     <%end%>
-
   <%end%>
-
   <div class="span3">
     <%= t.submit "utwórz", class: "btn btn-inverse"%>
   </div>

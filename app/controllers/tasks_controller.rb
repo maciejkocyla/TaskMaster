@@ -18,8 +18,16 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     current_task(@task)
+    store_location
   end
 
   def index
+
+  end
+
+  def complete
+    @task = Task.find(params[:task])
+    @task.toggle!(:completed)
+    redirect_back_or(current_user)
   end
 end

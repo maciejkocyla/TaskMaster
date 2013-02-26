@@ -9,16 +9,33 @@
     </li>
   </div>
 <%else%>
-    <div class="accordion-group">
+  <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= task.id%>">
-        <%= task.name%>
+          <%if task.completed?%>
+            <div style="text-decoration: line-through; color: grey"><%= task.name%></div>
+          <%else%>
+            <%= task.name%>
+          <%end%>
+          <div class="accordion-bar pull-right span4">
+            <%= link_to raw("<i class=\"icon-check\"></i> "), complete_task_path(:task => task), class: "span1"%>
+            <%= link_to raw("<i class=\"icon-wrench\"></i> "), '#', class: "span1"%>
+            <%= link_to raw("<i class=\"icon-plus\"></i> "), new_task_path(:will_be_project => task), class: "span1"%>
+          </div>
       </a>
     </div>
+    <%if task.content%>
     <div id="collapse<%= task.id%>" class="accordion-body collapse">
       <div class="accordion-inner">
-        <%= task.content%>
+        <p class="span7">
+          <blockquote>
+            <br />
+            <p><%= task.content%></p>
+          </blockquote>
+        </p>
       </div>
     </div>
   </div>
+  <%end%>
+
 <%end%>
