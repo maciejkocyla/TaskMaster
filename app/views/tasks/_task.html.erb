@@ -1,5 +1,6 @@
+<div class="row-fluid">
+
 <%if task.is_project?%>
-  <div>
     <li 
       <% if @current_task == task%>
         class="activated"
@@ -7,7 +8,7 @@
     >
       <%= link_to task.name, task%>
     </li>
-  </div>
+
 <%else%>
   <div class="accordion-group">
     <div class="accordion-heading">
@@ -39,3 +40,5 @@
   <%end%>
 
 <%end%>
+
+</div>

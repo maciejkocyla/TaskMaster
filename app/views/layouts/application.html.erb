@@ -10,18 +10,15 @@
     <![endif]-->
   </head>
   <body>
-    <div class="row">
-    <div class="container">
-    <%= render 'layouts/header' %>
+      <%= render 'layouts/header' %>
       <% flash.each do |key, value|%>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <%end%>
       <% if signed_in?%>
-        <%= render 'layouts/navbar'%>
+        <%= render 'layouts/user_account'%>
       <%end%>
-        <%= yield %>
+      <%= yield %>
       <%= render 'layouts/footer'%>
       <%= debug(params) if Rails.env.development? %>
-    </div>
   </body>
 </html>
