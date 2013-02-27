@@ -165,9 +165,6 @@ input {
   padding: 0px;
 }
 
-i{
-  float: right;
-}
 
 /* accordion  */
 
@@ -176,6 +173,10 @@ i{
 }
 
 .accordion-bar{
-  margin-top: -43px;
-  margin-right: -200px;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+
+.accordion-toggle{
+   float: left;
 }

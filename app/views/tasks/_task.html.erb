@@ -18,12 +18,12 @@
           <%else%>
             <%= task.name%>
           <%end%>
-          <div class="accordion-bar pull-right span4">
-            <%= link_to raw("<i class=\"icon-check\"></i> "), complete_task_path(:task => task), class: "span1"%>
-            <%= link_to raw("<i class=\"icon-wrench\"></i> "), '#', class: "span1"%>
-            <%= link_to raw("<i class=\"icon-plus\"></i> "), new_task_path(:will_be_project => task), class: "span1"%>
-          </div>
       </a>
+          <div class="pull-right span1">
+            <%= link_to raw("<i class=\"icon-check\"></i> "), complete_task_path(:task => task), class: "accordion-bar pull-left"%>
+            <%= link_to raw("<i class=\"icon-wrench\"></i> "), '#', class: "accordion-bar span1"%>
+            <%= link_to raw("<i class=\"icon-plus\"></i> "), new_task_path(:will_be_project => task), class: "accordion-bar span1 pull-right"%>
+          </div>
     </div>
     <%if task.content%>
     <div id="collapse<%= task.id%>" class="accordion-body collapse">
