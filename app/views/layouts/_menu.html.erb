@@ -1,5 +1,5 @@
 
-  <ul class="span2 nav nav-list pull-left">
+  <ul class="nav nav-list pull-left">
     <li class="nav-header"><%= @current_user.tasks.count%> Zadania do wykonania</li>
     <%= render @current_user.tasks.first %>
     <% @current_user.tasks.each do |task|%>
