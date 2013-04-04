@@ -1,13 +1,34 @@
+
 <h2>Nowe Zadanie</h2>
 
-
 <%=form_for(@task) do |t|%>
-  <div class="span4"> 
-    <%= t.text_field(:name, :value => 'nazwa')%>
+  <div class="span5">
+
+    <div class="span2">
+      <%= t.label :name, "nazwa"%>
+    </div>
+
+    <div class="span9"> 
+      <%= t.text_field :name%>
+    </div>
+
+    <div class="span2">
+      <%= t.label :date, "termin"%>
+    </div>
+
+    <div class="span9">
+      <%= t.date_select :date%>
+    </div>
+    
   </div>
 
   <div class="span6">
-    <%= t. text_area :content, :value => "opis #{params[:will_be_project]}", :rows => 4%>
+    <div class="span2">
+      <%= t.label :content, "opis"%>
+    </div>
+    <div class="span8">
+      <%= t.text_area :content, :rows => 7%>
+    </div>
   </div>
   
   <% if params[:will_be_project]== 'true'%>
@@ -17,8 +38,7 @@
       <%= rel.hidden_field :project_id, :value => params[:will_be_project]%>
     <%end%>
   <%end%>
-  <div class="span3">
+  <div class="span7">
     <%= t.submit "utwórz", class: "btn btn-inverse"%>
   </div>
 <%end%>
-

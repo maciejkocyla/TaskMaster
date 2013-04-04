@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title= full_title(yield(:title)) 
+    = stylesheet_link_tag    "application", media: "all" 
+    = javascript_include_tag "application", "tasks" 
+    = csrf_meta_tags 
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  %body
+    - flash.each do |key, value|
+      %div{ :class => "alert alert-#{ key }"}= value 
+    - if signed_in?
+      = render 'layouts/navbar'
+      .row-fluid
+        .span2
+          = render 'layouts/menu'
+        .span10
+          = yield
+    - else
+      = render 'layouts/header'
+      = yield 
+    = render 'layouts/footer'
+    - debug(params) if Rails.env.development?

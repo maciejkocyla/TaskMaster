@@ -1,4 +1,3 @@
-<div class="row-fluid">
 
 <%if task.is_project?%>
     <li 
@@ -10,35 +9,10 @@
     </li>
 
 <%else%>
-  <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= task.id%>">
-          <%if task.completed?%>
-            <div style="text-decoration: line-through; color: grey"><%= task.name%></div>
-          <%else%>
-            <%= task.name%>
-          <%end%>
-      </a>
-          <div class="pull-right span1">
-            <%= link_to raw("<i class=\"icon-check\"></i> "), complete_task_path(:task => task), class: "accordion-bar pull-left"%>
-            <%= link_to raw("<i class=\"icon-wrench\"></i> "), '#', class: "accordion-bar span1"%>
-            <%= link_to raw("<i class=\"icon-plus\"></i> "), new_task_path(:will_be_project => task), class: "accordion-bar span1 pull-right"%>
-          </div>
-    </div>
-    <%if task.content%>
-    <div id="collapse<%= task.id%>" class="accordion-body collapse">
-      <div class="accordion-inner">
-        <p class="span7">
-          <blockquote>
-            <br />
-            <p><%= task.content%></p>
-          </blockquote>
-        </p>
-      </div>
-    </div>
-  </div>
-  <%end%>
-
+  
+  <%= link_to raw("<i class=\"icon-check\"></i> "), complete_task_path(:task => task), class: "accordion-bar "%>
+  <%= link_to raw("<i class=\"icon-wrench\"></i> "), '#', class: "accordion-bar"%>
+  <%= link_to raw("<i class=\"icon-plus\"></i> "), new_task_path(:will_be_project => task), class: "accordion-bar"%>
+  <a href="#",data-remote = "true", onclick="absolute(-4)"><%=task.name%></a> <br/><br/>
 <%end%>
 
-</div>
