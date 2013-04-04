@@ -14,7 +14,7 @@
   <%= link_to raw("<i class=\"icon-wrench\"></i> "), '#', class: "accordion-bar"%>
   <%= link_to raw("<i class=\"icon-plus\"></i> "), new_task_path(:will_be_project => task), class: "accordion-bar"%>
   <a href="#" data-show-content='<%= task.id%>'><%= task.name%></a><br/>
-  <div id='<%= task.id%>' class="span11 offset1 pull-right"><%= task.content%></div>
+  <div id='<%= task.id%>' class="hiddenContent span11 offset1 pull-right"><%= task.content%></div>
 
 <%end%>
 
