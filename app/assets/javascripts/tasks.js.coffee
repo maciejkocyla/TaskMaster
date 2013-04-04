@@ -1,5 +1,5 @@
-absolute = (num) -> 
-  if num >= 0
-    alert num
-  else
-    alert -num
+$ ->
+  $("a[data-show-content]").click ->
+    contentid = $(this).data("show-content");
+    $("#" + contentid).fadeToggle();
+    

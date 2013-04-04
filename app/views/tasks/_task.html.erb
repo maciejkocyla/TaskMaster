@@ -13,6 +13,8 @@
   <%= link_to raw("<i class=\"icon-check\"></i> "), complete_task_path(:task => task), class: "accordion-bar "%>
   <%= link_to raw("<i class=\"icon-wrench\"></i> "), '#', class: "accordion-bar"%>
   <%= link_to raw("<i class=\"icon-plus\"></i> "), new_task_path(:will_be_project => task), class: "accordion-bar"%>
-  <a href="#",data-remote = "true", onclick="absolute(-4)"><%=task.name%></a> <br/><br/>
+  <a href="#" data-show-content='<%= task.id%>'><%= task.name%></a><br/>
+  <div id='<%= task.id%>' class="span11 offset1 pull-right"><%= task.content%></div>
+
 <%end%>
 
