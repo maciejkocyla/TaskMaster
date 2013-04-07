@@ -17,7 +17,7 @@
         .span4
           = render 'layouts/menu'
         .span8.main_window
-          = render 'layouts/project_manager'
+          = render 'layouts/project_manager' unless :will_be_project
           = yield
     - else
       = render 'layouts/header'
