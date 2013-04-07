@@ -4,7 +4,7 @@
 <%=form_for(@task) do |t|%>
   <div class="span5">
 
-    <div class="span2">
+    <div class="span2" style="margin-left: 7px">
       <%= t.label :name, "nazwa"%>
     </div>
 
@@ -39,6 +39,6 @@
     <%end%>
   <%end%>
   <div class="span7">
-    <%= t.submit "utwórz", class: "btn btn-inverse"%>
+    <%= t.submit "utwórz zadanie", class: "btn btn-inverse"%>
   </div>
 <%end%>

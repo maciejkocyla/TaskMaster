@@ -17,7 +17,7 @@
   </div>
   <a href="#" data-show-content='<%= task.id%>'><%= task.name%></a>
 </div>
-  <div id='<%= task.id%>' class="task_content" style="display: none">
+  <div id='<%=task.id%>' class="task_content" style="display: none">
     <%  @current_user.tasks.each do |t|%>
       <% if t.projects.first == task%>
         <%= render t%>

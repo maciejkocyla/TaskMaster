@@ -12,7 +12,7 @@
   <div>
     <% current_user.tasks.each do |task|%>
       <% if task.projects.first == @task && task.completed?%>
-        <%= render task%>
+        <%= render task {right}%>
       <%end%>
     <%end%>
   </div>
