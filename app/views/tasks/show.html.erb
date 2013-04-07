@@ -1,5 +1,5 @@
   <h5>Bierzące zadania:</h5>
-<div class="accordion" id="accordion1>">
+<div>
     <% current_user.tasks.each do |task|%>
       <% if task.projects.first == @task && !task.completed?%>
         <%= render task%>
@@ -9,7 +9,7 @@
   <br />
 
   <h5>Zadania wykonane:</h5>
-  <div class="accordion" id="accordion3">
+  <div>
     <% current_user.tasks.each do |task|%>
       <% if task.projects.first == @task && task.completed?%>
         <%= render task%>

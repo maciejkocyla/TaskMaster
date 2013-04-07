@@ -22,6 +22,11 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  text-align: center;
+
+}
+
 section {
   overflow: auto;
 }
@@ -62,6 +67,8 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
+  padding-right: 5px;
+  padding-left: 5px;
   color: #999;
 }
 
@@ -141,29 +148,14 @@ input {
 
 /* logged menu*/
 
-.nav-list{
-  background-color: #CCC;
-  text-align: left;
-  float: left;
-  padding-top: 15px;
-  padding-bottom: 200px;
-  margin-top: -20px;
+
+.left-panel {
+  border-right: 2px solid #CCCCCC;
+  margin-left: 5px;
   margin-right: 5px;
-  font-size: 0.9em;
-  li{
-    padding: 10px;
-    padding-right: 0px;
-    margin-right: -20px;    
+  h4{
+    margin-left: 10px;
   }
-}
-
-
-
-.activated{
-  background-color: #FCFCFC;
-  text-align: left;
-  margin-right: -20px;
-  padding: 0px;
 }
 
 
@@ -180,4 +172,36 @@ input {
 
 .accordion-toggle{
    float: left;
+}
+
+//		task partial
+
+.task_link{
+  //background-color: #D3D3D3;
+  border-bottom: 2px solid;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+.task_content{
+  //border-right: 1px solid;
+  //background-color: #CCC;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 20px;
+}
+
+
+//		header
+
+.bar{
+  padding-bottom: -20px;
+}
+
+.progress{
+  padding-top: -20px;
+}
+
+.brand{
+  margin-top: 5px;
 }

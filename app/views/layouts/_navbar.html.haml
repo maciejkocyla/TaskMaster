@@ -1,16 +1,16 @@
 .navbar.navbar-inverse
-  .navbar-inner
-    .brand= @current_user.name
-    .nav.pull-right
-      %li.divider-vertical.divider-inverse
+  .navbar-inner.row-fluid
+    .brand.span3
+      = @current_user.name
+    .progress.span8
+      %div{ :class => "bar", :style => "width: 60%;"}
+
+    .nav.span12
       %li= link_to "callendar", '#'
       %li= link_to "habits", '#'
       %li= link_to "new project", new_task_path(:will_be_project => true)
       - if !@current_task.nil?
-        %li.dropdown
-        %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}= @current_task.name
-        %b.caret
-        %ul.dropdown-menu
-          = link_to "delete", '#'
-          = link_to "new task", new_task_path(:will_be_project => @current_task)
+        .nav.pull-right
+          %li= link_to "delete " + @current_task.name, '#' unless @current_task.name == 'Daily'
+          %li= link_to "new task for " + @current_task.name, new_task_path(:will_be_project => @current_task)
 

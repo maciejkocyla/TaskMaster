@@ -1,13 +1,22 @@
-
-  <ul class="nav nav-list pull-left">
-    <li class="nav-header"><%= @current_user.tasks.count%> Zadania do wykonania</li>
-    <%= render @current_user.tasks.first %>
+<div class="left-panel">
+<h4>na dzisiaj:</h4>
     <% @current_user.tasks.each do |task|%>
-      <%= render task unless task == @current_user.tasks.first || task.completed? || !task.is_project?%>
-    <% end %>
-    <li class="nav-header">Ukończone zadania:</li>
-    <% @current_user.tasks.each do |task|%>
-      <%= render task unless task == @current_user.tasks.first ||  !task.completed? || !task.is_project?%>
-    <% end %>
-  </ul>
-
+      <% if (task.projects.first == @current_user.tasks.first || task.projects.second == @current_user.tasks.first) && task.relations.one?%>
+        <%= render task%>
+      <% elsif !task.date.nil? && task.date.today? && !task.is_project?%>
+        <%= render task%>
+      <%end%>
+    <%end%>
+<h4>na jutro:</h4>
+  <% @current_user.tasks.each do |task|%>
+    <% if !task.date.nil? && (task.date == Date.tomorrow) && !task.is_project? && task.relations.one?%>
+      <%= render task%>
+    <%end%>
+  <%end%>
+<h4>zaległe:</h4>
+  <% @current_user.tasks.each do |task|%>
+    <% if !task.date.nil? && task.date.end_of_day.past? && !task.is_project?%>
+      <%= render task%>
+    <%end%>
+  <%end%>
+</div>

@@ -1,0 +1,12 @@
+.btn-group.span6
+  %a{ :class => "btn dropdown-toggle span12", "data-toggle" => "dropdown", :href => "#"}
+    - if @current_task.nil? 
+      wybierz projekt
+    -else
+      = @current_task.name
+    %span{ :class => "caret"}  
+  %ul{ :class => "dropdown-menu"}
+    - @current_user.tasks.each do |task|
+      = render task unless task == @current_user.tasks.first || task.completed? || !task.is_project?
+<br/>
+<br/>
