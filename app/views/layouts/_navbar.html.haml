@@ -1,7 +1,7 @@
 .navbar.navbar-inverse
   .navbar-inner.row-fluid
     .brand.span3
-      = @current_user.name
+      = link_to @current_user.name, @current_user
     .progress.progress-striped.span8
       %div{ :class => "bar", :style => "width: 60%;"}
 
