@@ -9,9 +9,9 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   %body
-    - flash.each do |key, value|
-      %div{ :class => "alert alert-#{ key }"}= value 
     - if signed_in?
+      - flash.each do |key, value|
+        %div{ :class => "alert alert-#{ key }"}= value 
       = render 'layouts/navbar'
       .row-fluid
         .span4
