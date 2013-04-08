@@ -11,7 +11,7 @@
         = render task unless task == @current_user.tasks.first || task.completed? || !task.is_project?
   - if !@current_task.nil? && @current_task.name != 'Daily'
     .btn.btn-inverse.span3
-      = link_to "delete " + @current_task.name, '#'   
+      = link_to "delete " + @current_task.name, @current_task, method: :delete, data:{ confirm: "are you sure you want to remove #{@current_task.name}"}   
     .btn.btn-inverse.span3
       = link_to "new task for " + @current_task.name, new_task_path(:will_be_project => @current_task)
 

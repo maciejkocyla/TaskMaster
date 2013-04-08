@@ -2,8 +2,10 @@
   .navbar-inner.row-fluid
     .brand.span3
       = link_to @current_user.name, @current_user
-    .progress.progress-striped.span8
+    .progress.progress-striped.span4
       %div{ :class => "bar", :style => "width: 60%;"}
+    .span1.pull-right
+      = link_to "log out", signout_path, method: "delete" 
 
     .nav.span12
       %li= link_to "callendar", '#'

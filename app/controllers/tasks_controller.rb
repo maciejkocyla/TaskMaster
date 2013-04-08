@@ -1,4 +1,8 @@
 class TasksController < ApplicationController
+
+  before_filter :signed_in_user
+  before_filter :correct_user, only: [:edit, :update, :destroy]
+
   def new
     @task = Task.new
     @task.relations.build
@@ -13,6 +17,12 @@ class TasksController < ApplicationController
       redirect_to new_task_path
       flash[:error] = "invali data - task not created"
     end
+  end
+
+  def destroy
+    Task.find(params[:id]).destroy
+    flash[:success] = "Project removed"
+    redirect_to current_user
   end
 
   def show
@@ -30,4 +40,12 @@ class TasksController < ApplicationController
     @task.toggle!(:completed)
     redirect_back_or(current_user)
   end
+
+  private
+ 
+    def correct_user
+      @task = Task.find(params[:id])
+      redirect_to(root_path) unless @current_user == @task.user
+    end
+
 end
