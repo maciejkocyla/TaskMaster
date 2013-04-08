@@ -10,9 +10,9 @@
     <![endif]-->
   %body
     - if signed_in?
+      = render 'layouts/navbar'
       - flash.each do |key, value|
         %div{ :class => "alert alert-#{ key }"}= value 
-      = render 'layouts/navbar'
       .row-fluid
         .span4
           = render 'layouts/menu'
