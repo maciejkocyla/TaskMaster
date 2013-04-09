@@ -1,4 +1,4 @@
-<%if task.is_project?%>
+<%if task.is_project? %>
     <li 
       <% if @current_task == task%>
         class="activated"
@@ -7,7 +7,7 @@
       <%= link_to task.name, task%>
     </li>
 
-<%else%>
+<% elsif place == 'right_side' or task.first_level? %>
 <div class="task_link">
   <%= link_to raw("<i class=\"icon-check\"></i> "), complete_task_path(:task => task)%>
   <div class="pull-right">
@@ -17,10 +17,10 @@
   </div>
   <a href="#" data-show-element-id='<%= place %>_task_<%= task.id %>' class="open-left-side-task" ><%= task.name%></a>
 </div>
-<div class="task_content" id="<%= place %>_task_<%= task.id %>" style="display: none">
-    <%  @current_user.tasks.each do |t|%>
-      <% if t.projects.first == task %>
-        <%= render :partial => '/tasks/task', locals: {place: place, task: t} %>
+<div class="task_content" id="<%= place %>_task_<%= task.id %>">
+    <%  @current_user.tasks.each do |user_task|%>
+      <% if user_task.belongs_to_task? task %>
+        <%= render :partial => '/tasks/task', locals: {place: place, task: user_task} %>
       <%end%>
     <%end%>
     <%= task.content%>

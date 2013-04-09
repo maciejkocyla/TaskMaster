@@ -1,4 +1,7 @@
 TaskMaster::Application.routes.draw do
+  resources :projects
+
+
   get "relations/create"
 
   resources :tasks
