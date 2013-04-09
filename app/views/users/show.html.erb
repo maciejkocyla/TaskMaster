@@ -1,3 +1,6 @@
 <%provide(:title, @user.name) %>
 
-
+<% if @user.projects.empty? %>
+  <p>Utwórz swój pierwszy projekt!</p>
+  <%= link_to "new project", new_project_path %>
+<% end %>
