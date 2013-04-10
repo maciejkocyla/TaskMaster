@@ -1,19 +1,18 @@
 .btn-group.btn-inverse.project-manager
   .btn.btn-inverse.span6
     %a{ :class => "dropdown-toggle", "data-toggle" => "dropdown", :href => "#"}
-      - if @current_task.nil? 
+      - if @current_project.nil? 
         wybierz projekt
       -else
-        = @current_task.name
+        = @current_project.name
       %span{ :class => "caret"}  
     %ul{ :class => "dropdown-menu"}
-      - @current_user.tasks.each do |task|
-        = render(:partial => '/tasks/task', locals: {side: 'right_side', task: task}) unless task == @current_user.tasks.first || task.completed? || !task.is_project?
-  - if !@current_task.nil? && @current_task.name != 'Daily'
+      - @current_user.projects.each do |project|
+        = render(:partial => '/projects/project', locals: {side: 'right_side', project: project})
+  - if !@current_project.nil?
     .btn.btn-inverse.span3
-      = link_to "delete " + @current_task.name, @current_task, method: :delete, data:{ confirm: "are you sure you want to remove #{@current_task.name}"}   
+      = link_to "delete " + @current_project.name, @current_project, method: :delete, data:{ confirm: "are you sure you want to remove #{@current_project.name}"}   
     .btn.btn-inverse.span3
-      = link_to "new task for " + @current_task.name, new_task_path(:will_be_project => @current_task)
-
+      = link_to "new task", new_task_path
 <br/>
 <br/>

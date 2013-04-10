@@ -38,5 +38,11 @@ module SessionsHelper
     @current_task = task 
   end
 
-
+  def current_project=(project)
+    @current_project = project 
+  end
+  
+  def set_current_project(project)
+    self.current_project = project
+  end
 end

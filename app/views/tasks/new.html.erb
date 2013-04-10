@@ -1,5 +1,5 @@
 
-<h2>Nowe Zadanie</h2>
+<h2>Nowe Zadanie </h2>
 
 <%=form_for(@task) do |t|%>
   <div class="span5">
@@ -31,13 +31,6 @@
     </div>
   </div>
   
-  <% if params[:will_be_project]== 'true'%>
-    <%= t.hidden_field :is_project, :value=>params[:will_be_project] %>
-  <%else%>
-    <%= t.fields_for :relations do |rel|%>
-      <%= rel.hidden_field :project_id, :value => params[:will_be_project]%>
-    <%end%>
-  <%end%>
   <div class="span7">
     <%= t.submit "utwórz zadanie", class: "btn btn-inverse"%>
   </div>

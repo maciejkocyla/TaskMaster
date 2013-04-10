@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    current_project(@project)
+    set_current_project(@project)
     store_location
   end
 

@@ -1,20 +1,11 @@
 <%provide(:title, @user.name) %>
 
-<<<<<<< HEAD
 <h4>Projekty:</h4>
-<% @user.tasks.each do |task| %>
-  <% if task.is_project?%>
+<% @user.projects.each do |project| %>
     <div class="span12">
-      <%= task.name %>
+      <%= render project %>
     </div>
     <br/>
-  <% end %>
 <% end %>
 
 
-=======
-<% if @user.projects.empty? %>
-  <p>Utwórz swój pierwszy projekt!</p>
-  <%= link_to "new project", new_project_path %>
-<% end %>
->>>>>>> 952cbb37d208d8f4b32fedb0183ae54490bcd444
