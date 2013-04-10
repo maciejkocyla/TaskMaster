@@ -1,0 +1,19 @@
+<h2>Nowy Projekt</h2>
+
+<%=form_for(@project) do |t|%>
+  <div class="span5">
+
+    <div class="span2" style="margin-left: 8px">
+      <%= t.label :name, "nazwa"%>
+    </div>
+
+    <div class="span9"> 
+      <%= t.text_field :name%>
+    </div>
+
+  </div>
+
+  <div class="span7">
+    <%= t.submit "Utwórz projekt", class: "btn btn-inverse"%>
+  </div>
+<%end%>

@@ -1,22 +1,26 @@
 <div class="left-panel">
 <h4>na dzisiaj:</h4>
-    <% @current_user.tasks.each do |task|%>
-      <% if (task.projects.first == @current_user.tasks.first || task.projects.second == @current_user.tasks.first) && task.relations.one?%>
-        <%= render task%>
-      <% elsif !task.date.nil? && task.date.today? && !task.is_project?%>
-        <%= render task%>
-      <%end%>
-    <%end%>
+    <% @current_user.tasks.each do |task| %>
+      <% if (task.projects.first == @current_user.tasks.first || task.projects.second == @current_user.tasks.first) && task.relations.one? %>
+        <%= #render :partial => '/tasks/task', locals: { task: task, place: 'left_side' } 
+    %>
+      <% elsif !task.date.nil? && task.date.today? && !task.is_project? %>
+        <%= render :partial => '/tasks/task', locals: { task: task, place: 'left_side' } 
+    %>
+      <% end %>
+    <% end %>
 <h4>na jutro:</h4>
-  <% @current_user.tasks.each do |task|%>
-    <% if !task.date.nil? && (task.date == Date.tomorrow) && !task.is_project? && task.relations.one?%>
-      <%= render task%>
-    <%end%>
-  <%end%>
+  <% @current_user.tasks.each do |task| %>
+    <% if !task.date.nil? && (task.date == Date.tomorrow) && !task.is_project? && task.relations.one? %>
+      <%=# render :partial => '/tasks/task', locals: { task: task, place: 'left_side' } 
+  %>
+    <% end %>
+  <% end %>
 <h4>zaległe:</h4>
-  <% @current_user.tasks.each do |task|%>
-    <% if !task.date.nil? && task.date.end_of_day.past? && !task.is_project?%>
-      <%= render task%>
-    <%end%>
-  <%end%>
+  <% @current_user.tasks.each do |task| %>
+    <% if !task.date.nil? && task.date.end_of_day.past? && !task.is_project? %>
+    <%= #render :partial => '/tasks/task', locals: { task: task, place: 'left_side' } 
+%>
+    <% end %>
+  <% end %>
 </div>

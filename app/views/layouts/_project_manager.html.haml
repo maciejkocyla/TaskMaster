@@ -8,7 +8,7 @@
       %span{ :class => "caret"}  
     %ul{ :class => "dropdown-menu"}
       - @current_user.tasks.each do |task|
-        = render task unless task == @current_user.tasks.first || task.completed? || !task.is_project?
+        = render(:partial => '/tasks/task', locals: {side: 'right_side', task: task}) unless task == @current_user.tasks.first || task.completed? || !task.is_project?
   - if !@current_task.nil? && @current_task.name != 'Daily'
     .btn.btn-inverse.span3
       = link_to "delete " + @current_task.name, @current_task, method: :delete, data:{ confirm: "are you sure you want to remove #{@current_task.name}"}   

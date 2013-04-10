@@ -1,7 +1,4 @@
 $ ->
-  
-  $("a[data-show-content]").click ->
-    contentid = $(this).data("show-content");
-    $("#" + contentid).slideToggle();
-    
-    
+  $("a.open-left-side-task").click ->
+    contentid = $(this).data("show-element-id")
+    $("##{contentid}").slideToggle()
