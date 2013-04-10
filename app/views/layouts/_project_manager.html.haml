@@ -13,6 +13,6 @@
     .btn.btn-inverse.span3
       = link_to "delete " + @current_project.name, @current_project, method: :delete, data:{ confirm: "are you sure you want to remove #{@current_project.name}"}   
     .btn.btn-inverse.span3
-      = link_to "new task", new_task_path
+      = link_to "new task", new_project_task_path(@project)
 <br/>
 <br/>

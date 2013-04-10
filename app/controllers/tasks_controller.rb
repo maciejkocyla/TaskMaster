@@ -3,17 +3,19 @@ class TasksController < ApplicationController
   before_filter :correct_user, only: [:edit, :update, :destroy]
 
   def new
+    @project = Project.find(params[:project_id])
     @task = Task.new
   end
 
   def create
-    @task = @current_project.tasks.build(params[:task])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.build(params[:task])
     if @task.save
       flash[:success] = "challenge accepted"
-      redirect_to @current_project
+      redirect_to @project
     else
-      redirect_to new_task_path
-      flash[:error] = "invali data - task not created"
+      redirect_to new_project_task_path
+      flash[:error] = "invali data - task not created #{params[:task]}"
     end
   end
 
