@@ -1,2 +1,10 @@
-- @current_project.tasks.each do |task|
-  = render task
+- @project.tasks.each do |task|
+  = render task unless task.completed?
+  %br
+
+%br
+%br
+
+%div{:style => "text-decoration: line-through;"}
+  -@project.tasks.each do |task|
+    = render task unless !task.completed?

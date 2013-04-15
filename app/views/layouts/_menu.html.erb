@@ -1,9 +1,13 @@
 <div class="left-panel">
 
-<%= 'current_project: ' + @current_project.name unless @current_project.nil?%>
-<%= 'current_task: ' + @current_task.name unless @current_task.nil? %>
 
 <h4>na dzisiaj:</h4>
+<% @current_user.tasks.each do |task|%>
+  <% if task.for_today?%>
+    <%=render task%>
+    <br/>
+  <% end %>
+<% end %>
 <h4>na jutro:</h4>
 <h4>zaległe:</h4>
 

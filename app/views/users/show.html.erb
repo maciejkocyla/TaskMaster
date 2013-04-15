@@ -1,11 +1,17 @@
 <%provide(:title, @user.name) %>
 
-<h4>Projekty:</h4>
-<% @user.projects.each do |project| %>
-    <div class="span12">
-      <%= render project %>
-    </div>
-    <br/>
+<% if @user.projects.empty? %>
+  <div style="text-align: center">
+    <h2>Nie dodano żadnych projektów</h2>
+    <%= link_to "nowy projekt", new_project_path, {:class => "btn btn-large btn-info"} %>
+  </div>
+<% else %>
+  <h4>Projekty:</h4>
+  <% @user.projects.each do |project| %>
+      <div class="span12">
+        <%= render project %>
+      </div>
+      <br/>
+  <% end %>
+
 <% end %>
-
-

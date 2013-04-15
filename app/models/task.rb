@@ -8,4 +8,13 @@ class Task < ActiveRecord::Base
 
   #validates :user_id, presence: true
   validates :name, presence: true
+
+  def for_today?
+    self.date.today? unless self.date.nil?
+  end
+
+
+
+
+
 end

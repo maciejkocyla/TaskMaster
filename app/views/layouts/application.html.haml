@@ -11,13 +11,13 @@
   %body
     - if signed_in?
       = render 'layouts/navbar'
+      = render 'layouts/project_manager' unless params[:action] == 'new'
       - flash.each do |key, value|
         %div{ :class => "alert alert-#{ key }"}= value 
       .row-fluid
         .span4
           = render 'layouts/menu'
         .span8.main_window
-          = render 'layouts/project_manager'
           = yield
     - else
       = render 'layouts/header'

@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :correct_user, only: [:edit, :update, :destroy]
+  before_filter :set_project
 
   def new
     @project = Project.new
@@ -18,14 +19,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    Project.find(params[:id]).destroy
+    @project
     flash[:success] = "Project removed"
     redirect_to current_user
   end
 
   def show
-    @project = Project.find(params[:id])
-    set_current_project(@project)
+    @project
     store_location
   end
 
@@ -34,15 +34,24 @@ class ProjectsController < ApplicationController
   end
 
   def complete
-    @project = Project.find(params[:project])
     @project.toggle!(:completed)
     redirect_back_or(current_user)
   end
 
   private
  
+    
+    def set_project
+      if params[:project_id].nil? && params[:id].nil?
+        @project = nil
+      elsif params[:project_id].nil? && !params[:id].nil?
+        @project = Project.find(params[:id])
+      else
+        @project = Project.find(params[:project_id])
+      end
+    end
+
     def correct_user
-      @project = Project.find(params[:id])
       redirect_to(root_path) unless @current_user == @project.user
     end
 

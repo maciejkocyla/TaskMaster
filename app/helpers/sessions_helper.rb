@@ -33,16 +33,4 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.url
   end
- 
-  def current_task(task)
-    @current_task = task 
-  end
-
-  def current_project=(project)
-    @current_project = project 
-  end
-  
-  def set_current_project(project)
-    self.current_project = project
-  end
-end
+end 

@@ -10,7 +10,12 @@ class TasksController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @task = @project.tasks.build(params[:task])
+    if @task.date.nil?
+      @task.date = Date.today
+    end
+
     if @task.save
+      current_user.tasks.push(@task)
       flash[:success] = "challenge accepted"
       redirect_to @project
     else
@@ -36,7 +41,7 @@ class TasksController < ApplicationController
   end
 
   def complete
-    @task = Task.find(params[:task])
+    @task = Task.find(params[:task_id])
     @task.toggle!(:completed)
     redirect_back_or(current_user)
   end

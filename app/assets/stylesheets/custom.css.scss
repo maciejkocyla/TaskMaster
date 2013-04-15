@@ -175,9 +175,18 @@ input {
   padding-left: 20px;
 }
 
+.project-manager{
+  margin-top: -19px;
+}
 
-.project-manager {
-  margin-top: -20px;
+.quick-task{
+  .text-field{
+    float: left;
+    
+  }
+  .span8{
+    margin-top: 7px;
+  }
 }
 
 //		header
@@ -193,4 +202,8 @@ input {
 
 .brand{
   margin-top: 5px;
+}
+
+.task{
+  border-bottom: 1px solid;
 }

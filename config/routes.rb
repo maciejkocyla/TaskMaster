@@ -7,6 +7,7 @@ TaskMaster::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
+  match 'complete_task', to: 'tasks#complete'
   match 'signout',	to: 'sessions#destroy', via: :delete
   match 'signin',	to: 'sessions#new'
   match '/signup',	to: 'users#new'
