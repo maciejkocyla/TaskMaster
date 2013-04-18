@@ -1,14 +1,14 @@
 .navbar.navbar-inverse
   .navbar-inner.row-fluid
-    .brand.span3
+    .brand.span10
       = link_to @current_user.name, @current_user
-    .progress.progress-striped.span4
-      %div{ :class => "bar", :style => "width: 60%;"}
     .span1.pull-right
       = link_to "log out", signout_path, method: "delete" 
     .span1.pull-right
       = Time.now.strftime("%m-%d-%Y")
-    .nav.span12
+    .nav.span3
       %li= link_to "callendar", '#'
       %li= link_to "habits", '#'
       %li= link_to "new project", new_project_path
+/    .progress.progress-striped.span8
+/      %div{ :class => "bar", :style => "width: 60%;"}

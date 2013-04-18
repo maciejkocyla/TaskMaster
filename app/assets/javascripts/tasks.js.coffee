@@ -1,4 +1,4 @@
 $ ->
-  $("a.open-left-side-task").click ->
-    contentid = $(this).data("show-element-id")
-    $("##{contentid}").slideToggle()
+  $("a[data-task-link]").click ->
+    taskid = $(this).data("task-link")
+    $("#task-content-" + taskid).slideToggle()

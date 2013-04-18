@@ -1,0 +1,37 @@
+
+<h2>Nowe Zadanie </h2>
+
+<%=form_for([@project, @task]) do |t|%>
+  <div class="span5">
+
+    <div class="span2" style="margin-left: 8px">
+      <%= t.label :name, "nazwa"%>
+    </div>
+
+    <div class="span9"> 
+      <%= t.text_field :name%>
+    </div>
+
+    <div class="span2">
+      <%= t.label :date, "termin"%>
+    </div>
+
+    <div class="span9">
+      <%= t.date_select :date%>
+    </div>
+    
+  </div>
+
+  <div class="span6">
+    <div class="span2">
+      <%= t.label :content, "opis"%>
+    </div>
+    <div class="span8">
+      <%= t.text_area :content, :rows => 7%>
+    </div>
+  </div>
+  
+  <div class="span7">
+    <%= t.submit "utwórz zadanie", class: "btn btn-inverse"%>
+  </div>
+<%end%>

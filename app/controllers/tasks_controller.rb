@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-  before_filter :correct_user, only: [:edit, :update, :destroy]
+#  before_filter :correct_user, only: [:edit, :update, :destroy]
 
   def new
     @project = Project.find(params[:project_id])
@@ -16,6 +16,7 @@ class TasksController < ApplicationController
 
     if @task.save
       current_user.tasks.push(@task)
+#      Task.find(params[:task_id]).tasks.push(@task) unless params[:task_id].nil?
       flash[:success] = "challenge accepted"
       redirect_to @project
     else
@@ -28,6 +29,22 @@ class TasksController < ApplicationController
     Task.find(params[:id]).destroy
     flash[:success] = "Project removed"
     redirect_to current_user
+  end
+
+  def edit
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:task_id])
+  end
+
+  def update
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+    if @task.update_attributes(params[:task])
+      flash[:success] = "task updated"
+      redirect_to @project
+    else 
+      flash[:error] = "something is fucked up"
+    end
   end
 
   def show
@@ -49,8 +66,12 @@ class TasksController < ApplicationController
   private
  
     def correct_user
-      @task = Task.find(params[:id])
-      redirect_to(root_path) unless @current_user == @task.user
+      if params[:id].nil?
+        @task = Task.find(params[:task_id])
+      else
+        @task = Task.find(params[:id])
+      end
+      redirect_to(root_path(:current_user => current_user.id, :task_user => @task.user.id)) unless current_user == @task.user
     end
 
 end

@@ -4,7 +4,7 @@
 <h4>na dzisiaj:</h4>
 <% @current_user.tasks.each do |task|%>
   <% if task.for_today?%>
-    <%=render task%>
+    <%=render :partial => 'tasks/task_short', :locals => {:task => task}%>
     <br/>
   <% end %>
 <% end %>
