@@ -33,8 +33,8 @@
           %li{ :class => "span2"}
             %button{ :class => "btn btn-primary pull-right", :onclick => "this.form.submit();", :name => "button", :type => "submit"}
               %i{ :class => "icon-plus icon-white"} 
-    .span1.pull-left 
-      =link_to raw("<i class=\"icon-tasks icon-white\"></i>"), new_project_task_path(@project), { :class => 'btn btn-primary pull-left'}
+      .span1.pull-left 
+        =link_to raw("<i class=\"icon-tasks icon-white\"></i>"), new_project_task_path(@project), { :class => 'btn btn-primary pull-left'} unless @project.nil?
 
 /            %a{ :class => "btn btn-primary", :onclick => "<%= render new_project_task_path %>"}
 /             %i{ :class => "icon-tasks icon-white"}
