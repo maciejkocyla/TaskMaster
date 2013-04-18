@@ -1,6 +1,6 @@
 %div{:class => "navbar navbar-inverse project-manager"}
   .navbar-inner.row-fluid
-    .nav.span4
+    .nav.span3
       %li
         %a{ :class => "dropdown-toggle", "data-toggle" => "dropdown", :href => "#"}
           - if @project.nil? 
@@ -10,7 +10,7 @@
           %span{ :class => "caret"}  
         %ul{ :class => "dropdown-menu"}
           - @current_user.projects.each do |project|
-            = render(:partial => '/projects/project', locals: {side: 'right_side', project: project})
+            = render(:partial => '/projects/project', locals: {project: project})
           %li{ :class => "divider"}
           %li
             = link_to "nowy projekt", new_project_path, {:style => "font-weight: bold"} 
@@ -19,22 +19,17 @@
         %li
           = link_to "delete " + @project.name, @project, method: :delete, data:{ confirm: "are you sure you want to remove #{@project.name}"}   
         %li{ :class => "divider-vertical"}
-        %li
-          = link_to "new task", new_project_task_path(@project)
 
-    .progress.progress-striped.span4
-      %div{ :class => "bar", :style => "width: 60%;"}
-
-    .nav.span3.quick-task
+    .nav.span6.quick-task.pull-right
       -if !@project.nil?
         = form_for([@project, @project.tasks.build]) do |task|
           %li{ :class => "span9"}
-            = task.text_field :name, {:value => "new task", :class => "text-field"}
+            = task.text_field :name, {:value => "create a quick task", :class => "text-field"}
           %li{ :class => "span2"}
-            %button{ :class => "btn btn-primary pull-right", :onclick => "this.form.submit();", :name => "button", :type => "submit"}
+            %button{ :class => "btn btn-primary span12", :onclick => "this.form.submit();", :name => "button", :type => "submit"}
               %i{ :class => "icon-plus icon-white"} 
-      .span1.pull-left 
-        =link_to raw("<i class=\"icon-tasks icon-white\"></i>"), new_project_task_path(@project), { :class => 'btn btn-primary pull-left'} unless @project.nil?
+    .button.span2.pull-right
+      =link_to "new task", new_project_task_path(@project), { :class => 'btn btn-primary span12'} unless @project.nil?
 
 /            %a{ :class => "btn btn-primary", :onclick => "<%= render new_project_task_path %>"}
 /             %i{ :class => "icon-tasks icon-white"}
