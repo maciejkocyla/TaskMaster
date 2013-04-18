@@ -184,20 +184,26 @@ input {
     float: left;
     
   }
-  .span8{
-    margin-top: 7px;
+  .btn{
+    margin-top: 5px;
+    margin-bottom: -10px;
+  }
+  .span9{
+    margin-top: 5px;
+    margin-bottom: -10px;
   }
 }
 
 //		header
 
 .bar{
-  padding-bottom: -20px;
+//  padding-bottom: -20px;
 }
 
 .progress{
-  padding-top: -20px;
-  margin-top: 10px;
+//  padding-top: -20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .brand{

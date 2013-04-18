@@ -1,6 +1,6 @@
 %div{:class => "navbar navbar-inverse project-manager"}
   .navbar-inner.row-fluid
-    .nav.span7
+    .nav.span4
       %li
         %a{ :class => "dropdown-toggle", "data-toggle" => "dropdown", :href => "#"}
           - if @project.nil? 
@@ -21,15 +21,20 @@
         %li{ :class => "divider-vertical"}
         %li
           = link_to "new task", new_project_task_path(@project)
-    .nav.span5.quick-task
+
+    .progress.progress-striped.span4
+      %div{ :class => "bar", :style => "width: 60%;"}
+
+    .nav.span3.quick-task
       -if !@project.nil?
         = form_for([@project, @project.tasks.build]) do |task|
-          %li{ :class => "span8"}
+          %li{ :class => "span9"}
             = task.text_field :name, {:value => "new task", :class => "text-field"}
-          %li{ :class => "span3"}
-            %button{ :class => "btn btn-primary", :onclick => "this.form.submit();", :name => "button", :type => "submit"}
-              %i{ :class => "icon-plus icon-white"}
-            %button{ :class => "btn btn-primary"}
-              %i{ :class => "icon-tasks icon-white"}
+          %li{ :class => "span2"}
+            %button{ :class => "btn btn-primary pull-right", :onclick => "this.form.submit();", :name => "button", :type => "submit"}
+              %i{ :class => "icon-plus icon-white"} 
+    .span1.pull-left 
+      =link_to raw("<i class=\"icon-tasks icon-white\"></i>"), new_project_task_path(@project), { :class => 'btn btn-primary pull-left'}
+
 /            %a{ :class => "btn btn-primary", :onclick => "<%= render new_project_task_path %>"}
 /             %i{ :class => "icon-tasks icon-white"}
