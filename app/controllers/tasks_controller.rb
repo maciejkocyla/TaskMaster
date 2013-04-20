@@ -14,9 +14,10 @@ class TasksController < ApplicationController
       @task.date = Date.today
     end
 
+
     if @task.save
+      Task.find_by_id(params[:task_id]).tasks.push(@task) unless params[:task_id].nil?
       current_user.tasks.push(@task)
-#      Task.find(params[:task_id]).tasks.push(@task) unless params[:task_id].nil?
       flash[:success] = "challenge accepted"
       redirect_to @project
     else

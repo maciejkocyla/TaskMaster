@@ -3,14 +3,20 @@
   <div class="pull-right">
   <%= task.date.to_time.strftime("%m/%d/%Y") unless task.date.nil?%>
   <%= link_to raw("<i class=\"icon-wrench\"></i> "), edit_project_task_path(@project.id, :task_id => task.id)%>
-  <%= link_to raw("<i class=\"icon-plus\"></i> "), new_project_task_path(@project.id, task.id)%> 
+  <%= link_to raw("<i class=\"icon-plus\"></i> "), new_project_task_path(@project.id, :parent_task_id => task.id)%> 
   </div>
 
   <a href="#" data-task-link="<%= task.id %>"
-  <%= raw("style= \"color: #545454\"") if task.completed? %>><%= task.name + ' (' + task.tasks.count.to_s + ')'%></a>
+  <%= raw("style= \"color: #545454\"") if task.completed? %>><%= task.name + ' (' + task.tasks.count( :conditions => {:completed => false}).to_s + ')'%></a>
 
-  <div id="task-content-<%= task.id unless task.content.nil?%>" class="task_content" style="display: none">
-      <%= task.content%>
+  <div id="task-content-<%= task.id %>" class="task_content" style="display: none">
+      
+    <% task.tasks.each do |subtask| %>
+      <%= render subtask unless subtask.completed? %>
+    <% end %>
+      <%= task.content unless task.content.nil? || task.content.blank?%>
       <br/>
   </div>
 </div>
+
+<br/>

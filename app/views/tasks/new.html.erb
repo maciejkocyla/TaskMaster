@@ -17,7 +17,7 @@
     </div>
 
     <div class="span9">
-      <%= t.date_select :date%>
+      <%= t.date_select :date, {:start_year => Time.now.year}%>
     </div>
     
   </div>
@@ -29,6 +29,7 @@
     <div class="span8">
       <%= t.text_area :content, :rows => 7%>
     </div>
+    <%= t.hidden_field :task_id, :value => params[:parent_task_id]%>
   </div>
   
   <div class="span7">

@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :completed, :content, :date, :name
+  attr_accessible :completed, :content, :date, :name, :task_id
 
   belongs_to :user
   belongs_to :project
@@ -13,8 +13,7 @@ class Task < ActiveRecord::Base
     self.date.today? unless self.date.nil?
   end
 
-
-
+  
 
 
 end

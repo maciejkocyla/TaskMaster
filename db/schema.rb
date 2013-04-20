@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(:version => 20130409195833) do
   create_table "tasks", :force => true do |t|
     t.string   "name"
     t.string   "content"
-    t.boolean  "completed"
+    t.boolean  "completed",  :default => false
     t.datetime "date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "user_id"
     t.integer  "task_id"
     t.integer  "project_id"

@@ -1,6 +1,5 @@
 - @project.tasks.each do |task|
-  = render task unless task.completed?
-  %br
+  = render task unless task.completed? || !task.task.nil?
 
 %br
 %br
