@@ -1,0 +1,8 @@
+-if @habits.nil?
+  %h3
+    No habits yet
+    = link_to "add some!", new_habit_path, { :class => "btn btn-primary"}
+-else
+  -@habits.each do |habit|
+    =render habit
+  

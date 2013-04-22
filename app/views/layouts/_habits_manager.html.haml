@@ -1,0 +1,14 @@
+.navbar.navbar-inverse.project-manager
+  .navbar-inner.row-fluid
+    .nav
+      %li
+        =link_to "new habit", new_habit_path
+      %li
+        %a{ :class => "dropdown-toggle", 'data-toggle' => "dropdown", 'href' => '#'}
+          choose habit to delete
+          .caret
+        %ul{ :class => "dropdown-menu"}
+          - if !@current_user.nil? 
+            - @current_user.habits.each do |habit|
+              %li
+                = link_to habit.name, habit, method: :delete, data:{ confirm: "are you sure you want to delete #{habit.name}?"}

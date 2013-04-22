@@ -11,7 +11,8 @@
   %body
     - if signed_in?
       = render 'layouts/navbar'
-      = render 'layouts/project_manager' unless params[:action] == 'new'
+      = render 'layouts/project_manager' if params[:controller] == 'projects' && params[:action] != 'new'
+      = render 'layouts/habits_manager' if params[:controller] == 'habits' && params[:action] != 'new'
       - flash.each do |key, value|
         %div{ :class => "alert alert-#{ key }"}= value 
       .row-fluid

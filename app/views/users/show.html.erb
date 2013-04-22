@@ -2,11 +2,11 @@
 
 <% if @user.projects.empty? %>
   <div style="text-align: center">
-    <h2>Nie dodano żadnych projektów</h2>
-    <%= link_to "nowy projekt", new_project_path, {:class => "btn btn-large btn-info"} %>
+    <h2>No projects yet</h2>
+    <%= link_to "new project", new_project_path, {:class => "btn btn-large btn-info"} %>
   </div>
 <% else %>
-  <h4>Projekty:</h4>
+  <h4>Projects:</h4>
   <% @user.projects.each do |project| %>
       <div class="span12">
         <%= render project %>
@@ -15,3 +15,20 @@
   <% end %>
 
 <% end %>
+<br/><br/>
+<% if @user.habits.empty?%>
+  <div style="text-align: center">
+    <h2>No habits yet</h2>
+    <%= link_to "new habit", new_habit_path, {:class => "btn btn-large btn-info"} %>
+  </div>
+<% else %>
+  <h4>Habits:</h4>
+  <% @user.habits.each do |habit| %>
+      <div class="span12">
+        <%= render habit %>
+      </div>
+      <br/>
+  <% end %>
+
+<% end %>
+

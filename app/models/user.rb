@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :tasks, dependent: :destroy
   has_many :projects, dependent: :destroy
+  has_many :habits, dependent: :destroy
   has_secure_password
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

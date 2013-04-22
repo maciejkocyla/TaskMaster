@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = @project.tasks.build(params[:task])
     if @task.date.nil?
-      @task.date = Date.today
+      @task.date = Date.today.beginning_of_day
     end
 
 
@@ -27,9 +27,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    Task.find(params[:id]).destroy
-    flash[:success] = "Project removed"
-    redirect_to current_user
+    Task.find(params[:task_id]).destroy
+    flash[:success] = "Task removed"
+    redirect_to Project.find(params[:project_id]) 
   end
 
   def edit
@@ -50,8 +50,9 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
     current_task(@task)
-    store_location
+    redirect_to @project
   end
 
   def index

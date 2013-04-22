@@ -1,5 +1,5 @@
 
-<h2>Nowe Zadanie </h2>
+<h2>Wprowadź zmiany:</h2>
 
 <%=form_for([@project, @task]) do |t|%>
   <div class="span5">
@@ -32,6 +32,6 @@
   </div>
   
   <div class="span7">
-    <%= t.submit "utwórz zadanie", class: "btn btn-inverse"%>
+    <%= t.submit "zatwierdź", class: "btn btn-inverse"%>
   </div>
 <%end%>

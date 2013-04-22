@@ -10,10 +10,16 @@ class Task < ActiveRecord::Base
   validates :name, presence: true
 
   def for_today?
-    self.date.today? unless self.date.nil?
+    self.date.today? unless self.date.nil? || self.completed?
   end
 
-  
+  def for_tomorrow?  
+    self.date == 1.day.from_now.beginning_of_day unless self.date.nil? || self.completed?
+  end
+
+  def delayed?
+    self.date.end_of_day.past? unless self.date.nil? || self.completed?
+  end
 
 
 end

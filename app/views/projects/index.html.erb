@@ -1,0 +1,17 @@
+<%provide(:title, 'projekty') %>
+
+<% if @projects.empty? %>
+  <div style="text-align: center">
+    <h2>No projects yet</h2>
+    <%= link_to "nowy projekt", new_project_path, {:class => "btn btn-large btn-info"} %>
+  </div>
+<% else %>
+  <h4>Projects:</h4>
+  <% @projects.each do |project| %>
+      <div class="span12">
+        <%= render project %>
+      </div>
+      <br/>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,9 @@
+.new_habit
+  = form_for @habit do |h|
+    = h.label :name
+    = h.text_field :name
+
+    = h.label :content
+    = h.text_area :content
+
+    = h.submit "create habit!", class: "btn btn-inverse"

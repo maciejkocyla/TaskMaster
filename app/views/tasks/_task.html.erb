@@ -2,7 +2,11 @@
   <%= link_to raw("<i class=\"icon-check\"></i> "), complete_task_path( :task_id => task.id) %>
   <div class="pull-right">
   <%= task.date.to_time.strftime("%m/%d/%Y") unless task.date.nil?%>
-  <%= link_to raw("<i class=\"icon-wrench\"></i> "), edit_project_task_path(@project.id, :task_id => task.id)%>
+  |
+  <%= link_to raw("<i class=\"icon-remove\"></i> "), project_task_path(@project, :task_id => task.id), method: :delete, data:{confirm: "are You sure you want to remove #{task.name}?"}%> 
+  |
+  <%= link_to raw("<i class=\"icon-edit\"></i> "), edit_project_task_path(@project.id, :task_id => task.id)%>
+  |
   <%= link_to raw("<i class=\"icon-plus\"></i> "), new_project_task_path(@project.id, :parent_task_id => task.id)%> 
   </div>
 

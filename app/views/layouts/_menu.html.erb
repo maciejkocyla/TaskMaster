@@ -1,14 +1,27 @@
 <div class="left-panel">
 
 
-<h4>na dzisiaj:</h4>
+<h4>Today:</h4>
 <% @current_user.tasks.each do |task|%>
   <% if task.for_today?%>
     <%=render :partial => 'tasks/task_short', :locals => {:task => task}%>
     <br/>
   <% end %>
 <% end %>
-<h4>na jutro:</h4>
-<h4>zaległe:</h4>
+<h4>Tomorrow:</h4>
+<% @current_user.tasks.each do |task|%>
+  <% if task.for_tomorrow?%>
+    <%=render :partial => 'tasks/task_short', :locals => {:task => task}%>
+    <br/>
+  <% end %>
+<% end %>
+
+<h4>Delayed:</h4>
+<% @current_user.tasks.each do |task|%>
+  <% if task.delayed?%>
+    <%=render :partial => 'tasks/task_short', :locals => {:task => task}%>
+    <br/>
+  <% end %>
+<% end %>
 
 </div>

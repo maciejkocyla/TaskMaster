@@ -8,7 +8,7 @@
       = Time.now.strftime("%m-%d-%Y")
     .nav.span3
       %li= link_to "callendar", '#'
-      %li= link_to "habits", '#'
-      %li= link_to "new project", new_project_path
+      %li= link_to "habits", habits_path
+      %li= link_to "projects", projects_path
 /    .progress.progress-striped.span8
 /      %div{ :class => "bar", :style => "width: 60%;"}

@@ -1,12 +1,14 @@
 TaskMaster::Application.routes.draw do
+
   resources :projects do
     resources :tasks
   end
-
+  resources :habits
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
+  match 'complete_habit', to: 'habits#complete'
   match 'complete_task',  to: 'tasks#complete'
   match 'signout',	      to: 'sessions#destroy', via: :delete
   match 'signin',	        to: 'sessions#new'
